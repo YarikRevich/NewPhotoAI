@@ -1,0 +1,1 @@
+FIT_PATH = "logic/ai/trainings/latest.ckpt"

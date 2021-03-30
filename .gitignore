@@ -1,0 +1,12 @@
+.DS_Store
+.vscode/
+
+#Ignores the venv environment
+
+logic/venv/
+
+#Ignores the service data for ai training 
+
+logic/ai/dataset
+logic/ai/test*.*
+logic/ai/trainings
