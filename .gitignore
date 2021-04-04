@@ -10,3 +10,7 @@ logic/venv/
 logic/ai/dataset
 logic/ai/test*.*
 logic/ai/trainings
+
+#Ignores credentials.sh file
+
+credentials.sh

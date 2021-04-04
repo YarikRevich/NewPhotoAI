@@ -13,11 +13,6 @@ class Tag(api_pb2_grpc.TagServicer):
         super().__init__(*args, **kwargs)
         self.model = FittedModel(create_stock_model())
 
-    def IsHuman(self, request, context):
-        is_human = self.model.is_human(request.photo)
-        return api_pb2.IsHumanResponse(ok=is_human)
-
-    def IsDog(self, request, context):
-        is_dog = self.model.is_dog(request.photo)
-        return api_pb2.IsDogResponse(ok=is_dog)
-
+    def RecognizeObject(self, request, context):
+        tags = self.model.recognize(request.photo)
+        return api_pb2.RecognizeObjectResponse(tags=tags)

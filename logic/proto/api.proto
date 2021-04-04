@@ -3,22 +3,13 @@ syntax = "proto3";
 package main;
 
 service Tag{
-    rpc IsHuman(IsHumanRequest) returns (IsHumanResponse){};
-    rpc IsDog(IsDogRequest) returns (IsDogResponse){};
+    rpc RecognizeObject(RecognizeObjectRequest) returns (RecognizeObjectResponse){};
 }
 
-message IsHumanRequest{
+message RecognizeObjectRequest{
     bytes photo = 1; 
 }
 
-message IsHumanResponse{
-    bool ok = 1;
-}
-
-message IsDogRequest{
-    bytes photo = 1;
-}
-
-message IsDogResponse{
-    bool ok = 1;
+message RecognizeObjectResponse{
+    string tags = 1;
 }

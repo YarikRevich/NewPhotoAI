@@ -14,28 +14,17 @@ class TagStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.IsHuman = channel.unary_unary(
-                '/main.Tag/IsHuman',
-                request_serializer=logic_dot_proto_dot_api__pb2.IsHumanRequest.SerializeToString,
-                response_deserializer=logic_dot_proto_dot_api__pb2.IsHumanResponse.FromString,
-                )
-        self.IsDog = channel.unary_unary(
-                '/main.Tag/IsDog',
-                request_serializer=logic_dot_proto_dot_api__pb2.IsDogRequest.SerializeToString,
-                response_deserializer=logic_dot_proto_dot_api__pb2.IsDogResponse.FromString,
+        self.RecognizeObject = channel.unary_unary(
+                '/main.Tag/RecognizeObject',
+                request_serializer=logic_dot_proto_dot_api__pb2.RecognizeObjectRequest.SerializeToString,
+                response_deserializer=logic_dot_proto_dot_api__pb2.RecognizeObjectResponse.FromString,
                 )
 
 
 class TagServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def IsHuman(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def IsDog(self, request, context):
+    def RecognizeObject(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -44,15 +33,10 @@ class TagServicer(object):
 
 def add_TagServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'IsHuman': grpc.unary_unary_rpc_method_handler(
-                    servicer.IsHuman,
-                    request_deserializer=logic_dot_proto_dot_api__pb2.IsHumanRequest.FromString,
-                    response_serializer=logic_dot_proto_dot_api__pb2.IsHumanResponse.SerializeToString,
-            ),
-            'IsDog': grpc.unary_unary_rpc_method_handler(
-                    servicer.IsDog,
-                    request_deserializer=logic_dot_proto_dot_api__pb2.IsDogRequest.FromString,
-                    response_serializer=logic_dot_proto_dot_api__pb2.IsDogResponse.SerializeToString,
+            'RecognizeObject': grpc.unary_unary_rpc_method_handler(
+                    servicer.RecognizeObject,
+                    request_deserializer=logic_dot_proto_dot_api__pb2.RecognizeObjectRequest.FromString,
+                    response_serializer=logic_dot_proto_dot_api__pb2.RecognizeObjectResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -65,7 +49,7 @@ class Tag(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def IsHuman(request,
+    def RecognizeObject(request,
             target,
             options=(),
             channel_credentials=None,
@@ -75,25 +59,8 @@ class Tag(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/main.Tag/IsHuman',
-            logic_dot_proto_dot_api__pb2.IsHumanRequest.SerializeToString,
-            logic_dot_proto_dot_api__pb2.IsHumanResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def IsDog(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/main.Tag/IsDog',
-            logic_dot_proto_dot_api__pb2.IsDogRequest.SerializeToString,
-            logic_dot_proto_dot_api__pb2.IsDogResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/main.Tag/RecognizeObject',
+            logic_dot_proto_dot_api__pb2.RecognizeObjectRequest.SerializeToString,
+            logic_dot_proto_dot_api__pb2.RecognizeObjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -3,6 +3,9 @@ from logic.proto import api_pb2_grpc
 
 from concurrent import futures
 import grpc
+import os
+
+from termcolor import cprint
 
 
 def start_server():
@@ -17,7 +20,11 @@ def start_server():
 
     api_pb2_grpc.add_TagServicer_to_server(implementation.Tag(), server)
 
-    server.add_insecure_port("[::]:9089",)
+    ai_addr = os.environ.get("aiAddr", lambda: (cprint("aiAddr is not written in credentials.sh file\n", color="red"), exit(0)))
+    if isinstance(ai_addr, type(lambda: None)):
+        ai_addr()
+
+    server.add_insecure_port(ai_addr)
 
     server.start()
 
